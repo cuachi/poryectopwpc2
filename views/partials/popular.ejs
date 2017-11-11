@@ -1,0 +1,16 @@
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Más populares</h3>
+    </div>
+
+    <div class="panel-body">
+        <% sidebar.popular.forEach(function(popular){ %>
+            <div class="col-md-4 text-center" style="padding-bottom: .5em;">
+                <a href=<%= "/images/index/"+popular.uniqueId%>>
+                    <img src=<%= "/public/upload/"+popular.filename %> alt="Imagen" class="img-thumbnail" style="width:75px;height:75px">
+                </a>
+            </div>
+            <% }); %>
+    </div>
+</div>

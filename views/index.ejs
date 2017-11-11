@@ -1,0 +1,59 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Cargar una imagen</h3>
+    </div>
+    <form action="/images/create" method="post" enctype="multipart/form-data">
+        <div class="panel-body form-horizontal">
+            <div class="form-group col-md-12">
+                <label for="file" class="col-md-2 control-label">
+                    Seleccionar archivo:
+                </label>
+                <div class="col-md-8">
+                    <input type="file" name="file" id="file" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group col-md-12">
+                <label for="title" class="col-md-2 control-label">
+                    Título:
+                </label>
+                <div class="col-md-10">
+                    <input type="text" name="title" id="title" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group col-md-12">
+                <label for="description" class="col-md-2 control-label">
+                    Descripción:
+                </label>
+                <div class="col-md-10">
+                    <textarea name="description" id="description" rows="2"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group col-md-12">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-success" type="submit" id="login-btn">
+                        <i class="fa fa-cloud-upload"></i>
+                        Cargar imágen
+                    </button>
+                </div>
+            </div>
+    </form>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Imágenes recientes</h3>
+    </div>
+    <div class="panel-body col -md-12">
+            <% images.forEach(function(image){ %>
+                <div class="col-md-4" style="padding-bottom: 1 em;">
+                <a href=<%="/images/index/" +image.uniqueId%> </a>
+                <img src=<%="/public/upload/" +image.filename%> alt=
+                <%=image.title%> style="width: 175px; height:175px;" class="img-thumbnail">
+                    </a>
+        </div>
+        <% });%>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Ultimos comentaios</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="media-list">
+            <% sidebar.commnets.forEach(function(comment){ %>
+                <li class="media">
+                    <a href="#" class="pull-left">
+                        <img src=<%= "http://www.gravatar.com/avatar/"+comment.gravatar%> alt="imagen avatar" class="media-object">
+                    </a>
+                    <div class="media-body"><%= comment.text %><br>
+                        <strong class="media-heading"><%= comment.name %></strong>
+                        <small class="text-muted"><%= timeago(comment.timestamp) %></small>
+                    </div>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+</div>
+</div>
