@@ -1,12 +1,25 @@
 var statsHelper = require('./statshelper'),
     imagesHelper = require('./imageshelper'),
-    commentsHelper= require('./commentshelper');
+    commentsHelper= require('./commentshelper'),
+    async = require('async');
 
 module.exports = function(vm,cb){
-   vm.sidebar={
-        stats: statsHelper(),
-        popular: imagesHelper.populars(),
-        commnets: commentsHelper.newest()
-    };
-    cb(vm);
+   async.parallel([
+       (next)=>{
+           statsHelper(next);
+       },
+       (next)=>{
+           imagesHelper.populars(next);
+       },
+       (next)=>{
+           commentsHelper.newest(next);
+       },
+   ],(err,results)=>{
+       vm.sidebar ={
+           stats: results[0],
+           popular: results[1],
+           comments: results[2]
+       };
+       cb(vm);
+   });
 };

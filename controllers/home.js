@@ -21,6 +21,7 @@ module.exports = {
             }
             viewModel.images = images;
             sidebar(viewModel, (vm) => {
+                console.log(vm);
                 res.render('index', vm);
             });
         });
